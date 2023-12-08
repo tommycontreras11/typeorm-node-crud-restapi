@@ -1,0 +1,7 @@
+node_modules
+build
+
+# .gitignore
+
+# Ignore the migrations folder
+/src/database/migrations/*.{ts,js}
