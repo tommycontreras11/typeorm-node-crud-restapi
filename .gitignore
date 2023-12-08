@@ -4,4 +4,4 @@ build
 # .gitignore
 
 # Ignore the migrations folder
-/src/database/migrations/*.{ts,js}
+src/database/migrations/*.{ts,js}
