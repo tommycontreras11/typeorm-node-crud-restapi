@@ -8,7 +8,7 @@ export enum GENDER_ENUM {
     OTHER = "OTHER"
 }
 
-export type ENUM_TYPE = `${GENDER_ENUM}`;
+export type GENDER_TYPE = `${GENDER_ENUM}`;
 
 @Entity({ name: 'user-info' })
 export class UserInfoEntity extends Base {
@@ -19,12 +19,12 @@ export class UserInfoEntity extends Base {
     address: string;
 
     @Column({ type: 'enum', enum: GENDER_ENUM })
-    gender: ENUM_TYPE;
+    gender: GENDER_TYPE;
     
     @Column()
-    userInfoId: number;
+    userId: number;
 
     @OneToOne(() => (UserEntity), (user) => user.userInfo)
-    @JoinColumn({ name: 'userInfoId', referencedColumnName: 'id' })
+    @JoinColumn({ name: 'userId', referencedColumnName: 'id' })
     user: UserEntity;
 }
