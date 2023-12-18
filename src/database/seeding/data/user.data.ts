@@ -13,7 +13,7 @@ export const userData: IUserDataSeed[] = [
         firstName: 'Bruce',
         lastName: 'Wayne',
         userInfo: {
-            birthDate: new Date(),
+            birthDate: new Date('2003-11-01'),
             address: 'C/ Gualey',
             gender: 'MALE'
         }    
