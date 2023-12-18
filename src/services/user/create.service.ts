@@ -2,15 +2,15 @@ import { UserInfoEntity } from "../../database/entities/entity/user-info.entity"
 import { UserEntity } from "../../database/entities/entity/user.entity";
 import { CreateUserDto } from "../../dto/user.dto";
 
-export async function createUserService({ username, ...payload }: CreateUserDto) {
-    const foundUserName = await UserEntity.findOne({ where: { username } }).catch(e => {
+export async function createUserService({ userName, ...payload }: CreateUserDto) {
+    const founduserName = await UserEntity.findOne({ where: { userName } }).catch(e => {
         console.error('UserEntity.findOne: ', e)
         return null
     })
 
-    if(foundUserName) return Promise.reject({ message: 'Username is already in use' })
+    if(founduserName) return Promise.reject({ message: 'userName is already in use' })
 
-    const user = await UserEntity.create({ username, ...payload }).save().catch(e => {
+    const user = await UserEntity.create({ userName, ...payload }).save().catch(e => {
         console.error('UserEntity.create: ', e)
         return null
     })

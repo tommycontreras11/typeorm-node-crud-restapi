@@ -1,15 +1,36 @@
-import path from "path";
-import { DataSource } from "typeorm"; 
+import 'reflect-metadata'
 
-export const AppDataSource = new DataSource({
-    type: "postgres",
-    host: "localhost",
-    port: 5432,
-    username: "postgres",
-    password: "root",
-    database: "typeorm-db",
-    entities: [path.join(__dirname, '../entities/entity/*.{ts,js}')],
-    synchronize: false,
-    migrations: [path.join(__dirname, '../migrations/*.{ts,js}')],
-    logging: true
-})
+import { DataSource } from 'typeorm'
+import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions'
+import ormconfig from '../../config/ormconfig'
+import logger from '../../libs/logger.lib'
+
+const connection: DataSource = new DataSource(ormconfig as PostgresConnectionOptions)
+
+export const createDataSourceConnections = () => {
+    return new Promise(async (resolve) => {
+        logger.info('Connecting database')
+        try {
+            await connection.initialize()
+            logger.info('Database connected successfully')
+            resolve(true)
+        } catch (error) {
+            logger.error('Could not connected database', { error })
+        }
+    })
+}
+
+export const closeDataSourceConnections = () => {
+    return new Promise(async (resolve) => {
+        try {
+            if (!connection) return
+            await connection.destroy()
+            logger.info('Database connection closed successfully')
+            resolve(true)
+        } catch (error) {
+            logger.error('Could not close database connection', { error })
+        }
+    })
+}
+
+export default connection

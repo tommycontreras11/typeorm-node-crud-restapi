@@ -6,17 +6,17 @@ export class CreateUserDto {
     @IsString()
     @IsNotEmpty()
     @Expose()
-    username: string;
+    userName: string;
 
     @IsString()
     @IsNotEmpty()
     @Expose()
-    firstname: string;
+    firstName: string;
 
     @IsString()
     @IsNotEmpty()
     @Expose()
-    lastname: string;
+    lastName: string;
 
     @IsDate()
     @IsNotEmpty()

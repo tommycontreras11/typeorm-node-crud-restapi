@@ -5,13 +5,13 @@ import { UserInfoEntity } from "./user-info.entity";
 @Entity({ name: 'users' })
 export class UserEntity extends Base {
     @Column()
-    username: string;
+    userName: string;
 
     @Column()
-    firstname: string;
+    firstName: string;
 
     @Column()
-    lastname: string;
+    lastName: string;
     
     @OneToOne(() => (UserInfoEntity), (userInfo) => userInfo.user)
     userInfo: UserInfoEntity;

@@ -19,7 +19,6 @@
     "m:revert": "npm run typeorm migration:revert",
     "m:run": "npm run typeorm migration:run",
     "model:create": "ts-node ./node_modules/typeorm/cli.js entity:create ./src/database/entities/%npm_config_name%",
-    "s:create": "typeorm subscriber:create ./src/database/subscribers/%npm_config_name%",
     "db:seed": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed -n ./src/config/ormconfig.ts",
     "test": "SET NODE_ENV=test&& jest --config ./jest.config.ts --runInBand --forceExit"
   },
@@ -34,7 +33,8 @@
     "morgan": "^1.10.0",
     "pg": "^8.11.3",
     "reflect-metadata": "^0.1.14",
-    "typeorm": "^0.3.17"
+    "typeorm": "^0.3.17",
+    "typeorm-seeding": "^1.6.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",

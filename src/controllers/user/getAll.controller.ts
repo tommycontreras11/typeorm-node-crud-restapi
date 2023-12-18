@@ -7,8 +7,8 @@ export const getAllUserController = async(_req: Request, res: Response) => {
         relations: { userInfo: true }
     }).then(users => {
         const data = users.map(user => ({
-            username: user.username,
-            fullName: `${user.firstname} ${user.lastname}`,
+            username: user.userName,
+            fullName: `${user.firstName} ${user.lastName}`,
             address: user.userInfo.address,
             gender: user.userInfo.gender,
             age: (new Date().getFullYear() - new Date(user.userInfo.birthDate).getFullYear())
