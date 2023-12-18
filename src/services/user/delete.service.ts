@@ -10,5 +10,5 @@ export async function deleteUserService(uuid: string) {
 
     foundUser.softRemove();
 
-    return "User deleted sucessfully"
+    return { message: "User deleted sucessfully" }
 }
